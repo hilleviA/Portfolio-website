@@ -1,70 +1,82 @@
-
+//Initierar moduler
 const { src, dest, watch, series, parallel } = require("gulp");
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify-es").default;
 const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
-
-//const imagemin = require('gulp-imagemin');
-
+const sourcemaps = require('gulp-sourcemaps');
+const sass = require('gulp-sass'); 
+sass.compiler = require('node-sass');
+const browserSync = require('browser-sync').create();
 
 //Sökvägar till de olika filerna
 const filePaths = {
     htmlPath: "src/**/*.html",
     cssPath: "src/**/*.css",
-    jsPath: "src/**/*.js"
+    jsPath: "src/**/*.js",
+    sassPath: "src/**/*.scss"
 };
-    //imagePath: "src/images/*" 
-
 
 //Kopierar och minifierar HTML-filer till Pub-katalogen
 function htmlTask() {
     return src(filePaths.htmlPath)
     .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(dest("pub"));
+    .pipe(dest("pub"))
+    .pipe(browserSync.stream());
 
 };
 
 //Slår samman, minifierar och kopierar CSS-filer till Pub-katalogen
 function cssTasks() {
     return src(filePaths.cssPath)
+    .pipe(sourcemaps.init())
     .pipe(concat("style.css"))
     .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(dest("pub/css"));
+    .pipe(sourcemaps.write())
+    .pipe(dest("pub/css"))
+    .pipe(browserSync.stream());
 };
+
+function sassTask() {
+    return src(filePaths.sassPath)
+    .pipe(sourcemaps.init())
+    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(dest("pub"))
+    .pipe(browserSync.stream());
+};
+
+
 
 //Slår samman, minifierar och flyttar JavaScriptfiler till Pub-katalogen
 function jsTasks() {
     return src(filePaths.jsPath)
+    .pipe(sourcemaps.init())
     .pipe(concat("main.js"))
     .pipe(uglify())
-    .pipe(dest("pub/js"));
+    .pipe(sourcemaps.write())
+    .pipe(dest("pub/js"))
+    .pipe(browserSync.stream());
 };
-
-/*
-
-//Kopierar och minifierar bilder till Pub-katalogen
-function imageTask() {
-    return src(filePaths.imagePath)
-    .pipe(imagemin())
-    .pipe(dest("pub/images"));
-};
-
-*/
 
 
 //Watch funktion
 function watchTask() {
+    browserSync.init({
+        server: {
+            baseDir: "./pub"
+        }   
+    });
     //Filerna att hålla koll på
-    watch([filePaths.htmlPath, filePaths.cssPath, filePaths.jsPath],
+    watch([filePaths.htmlPath, filePaths.cssPath, filePaths.jsPath, filePaths.sassPath],
     //Kör följande funktioner samtidigt
-    parallel(htmlTask, cssTasks, jsTasks));
+    parallel(htmlTask, cssTasks, jsTasks, sassTask)).on("change", browserSync.reload);
 };
-
 
 //Default funktion som kopierar alla filer till Pub-katalogen från början och sen statar Watcher 
 //som håller koll på ändringar 
 exports.default = series(
-    parallel(htmlTask, cssTasks, jsTasks), 
+    parallel(htmlTask, cssTasks, jsTasks, sassTask), 
     watchTask
 );
