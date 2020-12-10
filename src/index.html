@@ -4,23 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Link to CSS file-->
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <!-- Link to compiled CSS file -->
-    <link href="sass/main.css" rel="stylesheet" type="text/css"/>
-    <title>Mall</title>
+    <link href="css/sass/main.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Mall Moment 3.2</title>
 </head>
 <body>
     <header>
-        <h1>Hello Gulp World</h1>
-        <h2>Hi there</h2>
-        <h3>Hey world</h3>
+        
+        <nav id="mainNav">
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="#">Nyheter</a></li>
+                <li><a href="#">Om oss</a>
+                <li><a href="#">Kontakt</a></li>
+                <li><a href="#">Bilder</a></li>
+            </ul>
+        </nav>
+        <div id="navButton">
+            <div class="burger"></div>
+            <div class="burger"></div>
+            <div class="burger"></div>
+        </div>
+        <!-- Läser in mobilmeny -->
+        <nav id="hiddenNav">
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="#">Nyheter</a></li>
+                <li><a href="#">Om oss</a>
+                <li><a href="#">Kontakt</a></li>
+                <li><a href="#">Bilder</a></li>
+            </ul>
+        </nav>
+
     </header>
+    <section id="wrapper">
+        <h1 class="headline center">Nyheter</h1>
+        <section id="articles">
+            
+			<article class="articleLeft">
+				<h2>Polarisen smälter</h2>
+				<a target="blank" href="images/glacier.jpg"><img src="images/glacier.jpg" class="imgNews" alt="Glacier"></a>
+				<p class=date>2020-09-12</p>
+				<p>Nya rön från forskare visar att polarisarna smälter fortare än vad man tidigare trott och om ingeting görs snarast kommer isarna vara borta om 50 år. Detta kommer få ödesdigra konsekvenser då detta innebär att havsnivån kommer att stiga 10 meter de kommande 20 åren. </p>
+			</article>
 
-    <div id="wrapper">
+			<article class="articleMiddle">
+				<h2>Räntehöjning</h2>
+				<a target="blank" href="images/houses.jpg"><img src="images/houses.jpg" class="imgNews" alt="Houses"></a>
+				<p class="date">2020-09-12</p>
+				<p>Nu chockhöjs räntorna på bostadsmarkanden samtidigt som amorteringskraven skärps ytterligare. Detta kan komm att få förödande konsekvenser för lånetagare med redan höga räntor.</p>
+			</article>
 
-    </div><!-- END WRAPPER -->
-    
-    <footer></footer>
+			<article class="articleRight">
+				<h2>Grammisvinnarna</h2>
+				<a target="blank" href="images/band.jpg"><img src="images/band.jpg" class="imgNews" alt="The Moonwalking Monkeys"></a>
+				<p class="date">2020-09-12</p>
+				<p>Årets stora vinnare på Grammis-galan var utan tvekan The Moonwalking Monkeys som med sju nomineringar tog hem inte mindre än fem vinster, däribland årets nykomling och bästa pop.</p>
+            </article>
+        </section>
+    </section>   
+              
+    <footer>
+        <p>DT173G - Webbutveckling III</p>
+        <p>Hillevi Annfält</p>
+    </footer>
     <script src="js/main.js"></script>
 </body>
 </html>

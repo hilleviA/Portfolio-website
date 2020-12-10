@@ -1,10 +1,4 @@
-$color: blue;
-$color1: pink;
-
-h2 {
-    color: $color;
-}
-
-h3 {
- color: $color1;
-}
+@import "reset";
+@import "base";
+@import "layout";
+@import "components";

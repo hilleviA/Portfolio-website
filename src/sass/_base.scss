@@ -1,0 +1,31 @@
+//Varibles for fonts
+$font-stack: "Open sans", Helvetica, sans-serif;
+$dark-color: #292727;
+$light-color: #FFFFFF;
+
+//Color varibles
+$main-bg-color: #4875EB;
+$main-bg-light-color: lighten($main-bg-color, 30);
+$main-bg-dark-color: darken($main-bg-color, 30);
+$main-bg-super-light: lighten($main-bg-color, 40);
+$main-bg-super-dark: darken($main-bg-color, 30);
+
+//Themes
+@mixin color-theme($dark: true) {
+    @if $dark {
+        background-color: $main-bg-super-dark;
+        color: $light-color;
+    } @else {
+        background-color: $light-color;
+        color: $dark-color;
+    }
+}
+
+//Mediaqueries
+@mixin tablet {
+    @media only screen and (max-width: 900px) { @content; }
+}
+
+@mixin phone {
+    @media only screen and (max-width: 500px) { @content; }
+}

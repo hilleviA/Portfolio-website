@@ -8,14 +8,26 @@ const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass'); 
 sass.compiler = require('node-sass');
 const browserSync = require('browser-sync').create();
+const imagemin = require('gulp-imagemin');
 
 //Sökvägar till de olika filerna
 const filePaths = {
     htmlPath: "src/**/*.html",
-    cssPath: "src/**/*.css",
     jsPath: "src/**/*.js",
-    sassPath: "src/**/*.scss"
+    sassPath: "src/**/*.scss",
+    imagePath: "src/images/*"
 };
+
+
+//Kopierar och minifierar bilder till Pub-katalogen
+function imageTask() {
+    return src(filePaths.imagePath)
+    .pipe(imagemin())
+    .pipe(dest("pub/images"))
+    .pipe(browserSync.stream());
+};
+
+
 
 //Kopierar och minifierar HTML-filer till Pub-katalogen
 function htmlTask() {
@@ -26,27 +38,15 @@ function htmlTask() {
 
 };
 
-//Slår samman, minifierar och kopierar CSS-filer till Pub-katalogen
-function cssTasks() {
-    return src(filePaths.cssPath)
-    .pipe(sourcemaps.init())
-    .pipe(concat("style.css"))
-    .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(sourcemaps.write())
-    .pipe(dest("pub/css"))
-    .pipe(browserSync.stream());
-};
-
 function sassTask() {
     return src(filePaths.sassPath)
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}))
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write())
-    .pipe(dest("pub"))
+    .pipe(dest("pub/css"))
     .pipe(browserSync.stream());
 };
-
 
 
 //Slår samman, minifierar och flyttar JavaScriptfiler till Pub-katalogen
@@ -69,14 +69,14 @@ function watchTask() {
         }   
     });
     //Filerna att hålla koll på
-    watch([filePaths.htmlPath, filePaths.cssPath, filePaths.jsPath, filePaths.sassPath],
+    watch([filePaths.htmlPath, filePaths.jsPath, filePaths.sassPath, filePaths.imagePath],
     //Kör följande funktioner samtidigt
-    parallel(htmlTask, cssTasks, jsTasks, sassTask)).on("change", browserSync.reload);
+    parallel(htmlTask, jsTasks, sassTask, imageTask)).on("change", browserSync.reload);
 };
 
 //Default funktion som kopierar alla filer till Pub-katalogen från början och sen statar Watcher 
 //som håller koll på ändringar 
 exports.default = series(
-    parallel(htmlTask, cssTasks, jsTasks, sassTask), 
+    parallel(htmlTask, jsTasks, sassTask, imageTask), 
     watchTask
 );
