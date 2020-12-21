@@ -13,3 +13,16 @@ button.onclick = function() {
         menu.style.display = "block";
     }
 };
+
+class Person {
+        constructor(firstName, lastName, age) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+        }
+        showInfo() {
+            console.log(`Hej ${this.firstName} ${this.lastName}. Du är ${this.age} år.`);
+        } 
+    }
+    let person = new Person("Hillevi", "Annfält", 31);
+    person.showInfo();

@@ -1,6 +1,7 @@
-# En första webbplats skapad med Gulp, Browser-sync och Scss
+# Webbplats skapad med Gulp, Browser-sync, Scss och Babel
 
-En enkel webbplats bestående utav bara en startsida men som har utformats med hjälp av utvecklingsverktygen Gulp och Scss vilket verkligen har underlättat processen. Det finns fortfarande mycket att göra när det kommer till CSS och SCSS och denna kod är verkligen inte den bästa men har försökt att prova på olika tekniker som i vissa fall kanske inte tillför så mycket men gör så att man förstår hur de fungerar i alla fall. 
+En enkel webbplats bestående utav bara en startsida men som har utformats med hjälp av utvecklingsverktygen Gulp och Scss vilket verkligen har underlättat processen. Till detta moment har även Babel lagts till för att under utvecklingen kunna avända ES6 och sedan transpilera koden till ES5 så att koden fungerar som den ska i alla webbläsare.  
 
+Har även testat att lägga in en klass som skriver ut i konsolen för att se så att transpilering fungerar. Den fyller ingen funktion mer än att visa att det fungerar. 
 
-### Skrivet av **Hillevi Annfält** 2020-11-02
+### Skrivet av **Hillevi Annfält** 2020-12-10

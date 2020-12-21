@@ -9,6 +9,7 @@ const sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
+const babel = require("gulp-babel");
 
 //Sökvägar till de olika filerna
 const filePaths = {
@@ -27,15 +28,12 @@ function imageTask() {
     .pipe(browserSync.stream());
 };
 
-
-
 //Kopierar och minifierar HTML-filer till Pub-katalogen
 function htmlTask() {
     return src(filePaths.htmlPath)
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(dest("pub"))
     .pipe(browserSync.stream());
-
 };
 
 function sassTask() {
@@ -53,6 +51,7 @@ function sassTask() {
 function jsTasks() {
     return src(filePaths.jsPath)
     .pipe(sourcemaps.init())
+    .pipe(babel())
     .pipe(concat("main.js"))
     .pipe(uglify())
     .pipe(sourcemaps.write())
