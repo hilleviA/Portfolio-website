@@ -1,7 +1,13 @@
-# Webbplats skapad med Gulp, Browser-sync, Scss och Babel
+# Portfolio
+Webbplats som fungerar som portfolio där information om mig och mitt CV presenteras. 
 
-En enkel webbplats bestående utav bara en startsida men som har utformats med hjälp av utvecklingsverktygen Gulp och Scss vilket verkligen har underlättat processen. Till detta moment har även Babel lagts till för att under utvecklingen kunna avända ES6 och sedan transpilera koden till ES5 så att koden fungerar som den ska i alla webbläsare.  
+## Information hämtas med Fetch 
+Informationen under anställningar, utbildningar och projekt är dynamisk och hämtas in med Fetch API från en extern server och skrivs sedan ut med en loop på webbplatsens respektive delar. 
 
-Har även testat att lägga in en klass som skriver ut i konsolen för att se så att transpilering fungerar. Den fyller ingen funktion mer än att visa att det fungerar. 
+## Utvecklingen
+Webbplatsen är utvecklad i en automatiserad miljö med Gulp, Babel och SCSS. 
 
-### Skrivet av **Hillevi Annfält** 2020-12-10
+### Länk till webbplats
+http://hilleviannfalt.se/
+
+

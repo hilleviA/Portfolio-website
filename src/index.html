@@ -5,67 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Link to CSS file-->
     <link href="css/sass/main.css" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <title>Mall Moment 3.2</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <title>Portfolio</title>
 </head>
 <body>
     <header>
-        
-        <nav id="mainNav">
-            <ul>
-                <li><a href="index.html">Start</a></li>
-                <li><a href="#">Nyheter</a></li>
-                <li><a href="#">Om oss</a>
-                <li><a href="#">Kontakt</a></li>
-                <li><a href="#">Bilder</a></li>
+        <nav class="mainNav">
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="links">
+                <li><a href="#about">Om mig</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#projects">Projekt</a></li>
+                <li><a href="#contact">Kontakt</a></li>
             </ul>
         </nav>
-        <div id="navButton">
-            <div class="burger"></div>
-            <div class="burger"></div>
-            <div class="burger"></div>
-        </div>
-        <!-- Läser in mobilmeny -->
-        <nav id="hiddenNav">
-            <ul>
-                <li><a href="index.html">Start</a></li>
-                <li><a href="#">Nyheter</a></li>
-                <li><a href="#">Om oss</a>
-                <li><a href="#">Kontakt</a></li>
-                <li><a href="#">Bilder</a></li>
-            </ul>
-        </nav>
-
+        <div id="headerText">
+            <h1>{ WEB DEVELOPER }</h1>
+            <h2>Design || Front-end || Back-end</h2>
+        </div>   
     </header>
-    <section id="wrapper">
-        <h1 class="headline center">Nyheter</h1>
-        <section id="articles">
-			<article class="articleLeft">
-				<h2>Polarisen smälter</h2>
-				<a target="blank" href="images/glacier.jpg"><img src="images/glacier.jpg" class="imgNews" alt="Glacier"></a>
-				<p class=date>2020-09-12</p>
-				<p>Nya rön från forskare visar att polarisarna smälter fortare än vad man tidigare trott och om ingeting görs snarast kommer isarna vara borta om 50 år. Detta kommer få ödesdigra konsekvenser då detta innebär att havsnivån kommer att stiga 10 meter de kommande 20 åren. </p>
-			</article>
+    <div id="wrapper">
+        <section id="about">
+            <h2>{ Om mig }</h2>
+            <div id="aboutInfo">
+                <div id="image">
+                    <img src="images/aboutme.jpg" alt="Porträtt av Hillevi">
+                </div>
+                <div id="text">
+                    <h3>Kort om mig, Hillevi Annfält</h3>
+                    <p>Mitt namn är Hillevi Annfält och är Sveriges förmodligen enda icke-kaffedrickande webbutvecklare. (Galet, jag vet).  Jag jobbar både front-end och back-end och har även ett stort intresse för design och brinner för att skapa användarvänliga och responsiva webbplatser. För tillfället utvecklar jag mina skills på Mittuniversitet i Sundsvall men är alltid öppen för nya möjligheter och utmaningar. </p>
+                    <h3>Mina Skills</h3>
+                    <ul id="skills">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                        <li>SQL</li>
+                        <li>C#</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section><!-- END ABOUT-->
 
-			<article class="articleMiddle">
-				<h2>Räntehöjning</h2>
-				<a target="blank" href="images/houses.jpg"><img src="images/houses.jpg" class="imgNews" alt="Houses"></a>
-				<p class="date">2020-09-12</p>
-				<p>Nu chockhöjs räntorna på bostadsmarkanden samtidigt som amorteringskraven skärps ytterligare. Detta kan komm att få förödande konsekvenser för lånetagare med redan höga räntor.</p>
-			</article>
+        <section id="cv">
+            <div id="employment">
+                <h2>{ Anställningar }</h2>          
+            </div>
+            <div id="education">
+                <h2>{ Utbildningar }</h2> 
+            </div>
+        </section><!--END CV-->
 
-			<article class="articleRight">
-				<h2>Grammisvinnarna</h2>
-				<a target="blank" href="images/band.jpg"><img src="images/band.jpg" class="imgNews" alt="The Moonwalking Monkeys"></a>
-				<p class="date">2020-09-12</p>
-				<p>Årets stora vinnare på Grammis-galan var utan tvekan The Moonwalking Monkeys som med sju nomineringar tog hem inte mindre än fem vinster, däribland årets nykomling och bästa pop.</p>
-            </article>
-        </section>
-    </section>   
+        <section id="projects">
+            <h2>{ Projekt }</h2>
+            <div id="projectList">
+            </div>
+        </section><!--END PROJECTS-->
+
+        <section id="contact">
+            <h2> { Kontakt }</h2>
+            <div id="form-contact">
+                <h3>Say Hi! </h3>
+                <p>Intresserad av att veta mer? Eller har du ett projekt du vill dra igång?  Tveka inte att dra i väg ett meddelande så ska du se att vi kan skapa storverk tillsammans.</p> 
+                    <form method="POST" action="mailto:hillevi.annfalt@hotmail.com" enctype="text/plain">
+                        <label for="name">Namn:</label><br/>
+                        <input type="text" id="name" name="name" value="Ange namn"><br/>
+                        <label for="subject">Ämne: </label><br/>
+                        <input type="text" id="subject" name="subject" value="Vad handlar ditt ärende om?"><br/>
+                        <label for="message">Meddelande: </label><br/>
+                        <textarea id="message" name="message" rows="4" cols="50">Skriv någonting</textarea>
+                        <input type="submit" id="submit" value="Skicka">
+                    </form>
+                <div>
+                    <h4>Jag finns även på: </h4>
+                    <p><a href="#">LinkedIn</a><p>
+                    <p><a href="#">Github</a></p>
+                    <p><a href="mailto:hillevi.annfalt@hotmail.com">hillevi.annfalt@hotmail.com</a></p>
+                </div>
+            </div>
+        </section><!--END CONTACT-->
+        
+    </div><!-- END WRAPPER-->   
               
     <footer>
-        <p>DT173G - Webbutveckling III</p>
-        <p>Hillevi Annfält</p>
+        <p class="copyright"> {  © Hillevi Annfält 2020 }</p>   
     </footer>
     <script src="js/main.js"></script>
 </body>

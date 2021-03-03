@@ -36,6 +36,7 @@ function htmlTask() {
     .pipe(browserSync.stream());
 };
 
+//Kopierar och konvertar SCSS-filer 
 function sassTask() {
     return src(filePaths.sassPath)
     .pipe(sourcemaps.init())
@@ -45,7 +46,6 @@ function sassTask() {
     .pipe(dest("pub/css"))
     .pipe(browserSync.stream());
 };
-
 
 //Slår samman, minifierar och flyttar JavaScriptfiler till Pub-katalogen
 function jsTasks() {

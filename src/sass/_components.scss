@@ -1,1 +1,48 @@
-//Buttons, form etc.. 
+//Skill Buttons
+#about ul li {
+    background-color: #A8063D;
+    display: inline;
+    margin-right: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+#about ul li:hover {
+    background-color: #64063D;
+}
+
+
+//Form style
+input[type=text] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: $font-stack;
+    color: gray;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: $font-stack;
+    color: gray;
+  }
+  
+  
+  input[type=submit] {
+    width: 40%;
+    @include gradient-background-color-light;
+    color: $detail-font-color;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    font-family: $font-stack;
+  }
