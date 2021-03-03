@@ -8,7 +8,7 @@
   },
   "author": "Hillevi Annfält",
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": {  
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "browser-sync": "^2.26.12",

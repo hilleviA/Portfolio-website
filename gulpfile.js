@@ -11,7 +11,7 @@ const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const babel = require("gulp-babel");
 
-//Sökvägar till de olika filerna
+//Sökvägar till de olika filerna  
 const filePaths = {
     htmlPath: "src/**/*.html",
     jsPath: "src/**/*.js",
